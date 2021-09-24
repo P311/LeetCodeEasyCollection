@@ -71,3 +71,56 @@ class Solution:
             i += 1
         return -1
 ```
+###  [Longest Common Prefix](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/887/)
+```python
+        i = 0
+        r = ''
+        while True:
+            cur = ''
+            for s in strs:
+                if i < len(s):
+                    if cur == '':
+                        cur = s[i]
+                    elif s[i] != cur:
+                        return r
+                else:
+                    return r
+            r += cur
+            i += 1
+```
+
+### [Longest Common Prefix](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/887/)
+```python
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        # ans = strs[0]
+        # if len(strs) == 0:
+        #     return ''
+        # n = min([len(s) for s in strs])
+        # if len(strs) == 1:
+        #     return ans
+        # for i in range(1, len(strs)):
+        #     tmp = ''
+        #     print(ans, strs[i], i)
+        #     for j in range(min(len(ans), n)):
+        #         if ans[j] != strs[i][j]:
+        #             break
+        #         else:
+        #             tmp += strs[i][j]
+        #     ans = tmp
+        # return ans
+
+    
+        i = 0
+        l = min([len(s) for s in strs])
+        r = ''
+        a = strs[0]
+        while i < l:
+            if all([s[i] == a[i] for s in strs]):
+                r += a[i]
+                i += 1
+            else:
+                return r
+        return r
+            
+```
