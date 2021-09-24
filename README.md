@@ -55,3 +55,19 @@ class Solution:
             val = int(num) * -1 if not pos else int(num)
             return min(2**31-1, max(-2**31, val))
 ```
+## [Implement strStr()](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/885/)
+``` python
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        if needle == '':
+            return 0
+        if haystack == "":
+            return -1
+
+        l, k = len(haystack), len(needle)
+        for i in range(l):
+            if haystack[i: i+k] == needle:
+                return i
+            i += 1
+        return -1
+```
