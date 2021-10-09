@@ -124,3 +124,59 @@ class Solution:
         return r
             
 ```
+
+### [Coin Change](https://leetcode.com/problems/coin-change/)
+```
+class Solution:
+    def coinChange(self, coins: List[int], amount: int, dic = {}) -> int:
+        if amount == 0:
+            return 0
+        q = []
+        for i in coins:
+            q.append((i, 1))
+        s = set()
+        while q != []:
+            cur = q.pop(0)
+            for coin in coins:
+                if cur[0] == amount:
+                    return cur[1]
+                elif cur[0] + coin > amount:
+                    continue
+                elif cur[0] + coin not in s:
+                    s.add(cur[0] + coin)
+                    q.append((cur[0] + coin, cur[1] + 1))
+        return -1
+             
+        
+        # if amount == 0:
+        #     return 0
+        # arr = [math.inf for i in range(amount + 1)]
+        # for coin in coins:
+        #     if coin <= amount:
+        #         arr[coin] = 1
+        # for i, j in enumerate(arr):
+        #     if j != -1:
+        #         for coin in coins:
+        #             if i + coin <= amount:
+        #                 arr[i+coin] = min(arr[i+coin], arr[i] + 1)
+        # if arr[-1] == math.inf:
+        #     return -1
+        # return arr[-1]
+            
+            
+        # if amount == 0:
+        #     return 0
+        # if coins == []:
+        #     return -1
+        # cur = coins[0]
+        # i = 0
+        # mi = math.inf
+        # while i * cur <= amount:
+        #     val = self.coinChange(coins[1:], amount - i * cur)
+        #     if val != -1:
+        #         mi = min(i + val, mi)
+        #     i += 1
+        # if mi == math.inf:
+        #     return -1
+        # return mi
+```
