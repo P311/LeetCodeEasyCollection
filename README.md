@@ -1,4 +1,4 @@
-# LeetCodeEasyCollection
+# LeetCodeCollection
 ## [First Unique Character in a String](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/881/)
 ```python
 from collections import Counter
@@ -179,4 +179,21 @@ class Solution:
         # if mi == math.inf:
         #     return -1
         # return mi
+```
+
+### [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
+```
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        r = 0
+        l1, l2 = len(text1), len(text2)
+        s = [[0 for i in range(l2+1)] for j in range(l1+1)]
+        for i in range(1, l1+1):
+            for j in range(1, l2+1):
+                if text1[i-1] == text2[j-1]:
+                    s[i][j] = max(s[i-1][j], s[i][j-1], 1 + s[i-1][j-1])
+                else:
+                    s[i][j] = max(s[i-1][j], s[i][j-1])
+        return s[-1][-1]
+                   
 ```
